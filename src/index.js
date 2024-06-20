@@ -87,9 +87,11 @@ function Pizza(p) {
   return (
     <li className="pizza">
       <img src={p.pizzaObj.photoName} alt={p.pizzaObj.name} />
-      <h3>{p.pizzaObj.name}</h3>
-      <p>{p.pizzaObj.ingredients}</p>
-      <span>{p.pizzaObj.price}</span>
+      <div>
+        <h3>{p.pizzaObj.name}</h3>
+        <p>{p.pizzaObj.ingredients}</p>
+        <span>{p.pizzaObj.price}</span>
+      </div>
     </li>
   );
 }

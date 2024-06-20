@@ -178,6 +178,20 @@ body {
   background-color: #e9bb24;
 }
 
+@media screen and (max-width: 750px) {
+  .header h1 {
+    font-size: 2.6rem;
+  }
+  .pizzas {
+    grid-template-columns: 1fr;
+  }
+  .pizza div {
+    padding: 0;
+  }
+  .pizza h3 {
+    font-size: 1.8rem;
+  }
+}
 /*
 SPACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 40 / 48 / 64 / 80 / 96 / 128
