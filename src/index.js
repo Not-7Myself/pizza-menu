@@ -4,7 +4,7 @@ import "./index.css";
 
 const pizzaData = [
   {
-    name: "Focaccia",
+    name: "Pizza Focaccia",
     ingredients: "Bread with italian olive oil and rosemary",
     price: 6,
     photoName: "pizzas/focaccia.jpg",
@@ -69,7 +69,12 @@ function Menu() {
   return (
     <div className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
+
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} />
+        ))}
+      </ul>
     </div>
   );
 }
@@ -78,13 +83,14 @@ function Footer() {
   return <footer className="footer">We're currently Open!</footer>;
 }
 
-function Pizza() {
+function Pizza(p) {
   return (
-    <div>
-      <img src="pizzas\spinaci.jpg" alt="spinaci" />
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
+    <li className="pizza">
+      <img src={p.pizzaObj.photoName} alt={p.pizzaObj.name} />
+      <h3>{p.pizzaObj.name}</h3>
+      <p>{p.pizzaObj.ingredients}</p>
+      <span>{p.pizzaObj.price}</span>
+    </li>
   );
 }
 
