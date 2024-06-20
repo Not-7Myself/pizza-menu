@@ -70,6 +70,11 @@ function Menu() {
     <div className="menu">
       <h2>Our Menu</h2>
 
+      <p>
+        Authentic Italian Cuisine. 6 creative dishes to choose from. All from
+        our stone oven, all organic and delicious.
+      </p>
+
       <ul className="pizzas">
         {pizzaData.map((pizza) => (
           <Pizza pizzaObj={pizza} />
@@ -80,17 +85,43 @@ function Menu() {
 }
 
 function Footer() {
-  return <footer className="footer">We're currently Open!</footer>;
+  const hr = new Date().getHours();
+  const openHr = 10;
+  const closeHr = 20;
+  const isOpen = hr >= openHr && hr < closeHr;
+
+  return (
+    <footer className="footer">
+      {isOpen ? (
+        <div className="footer">
+          <p>
+            We are open until{" "}
+            <span style={{ color: "#e9bb24" }}>{closeHr}:00</span>. Come Visit
+            Us or order Online.
+          </p>
+        </div>
+      ) : (
+        <div className="footer">
+          Sorry we are closed right now. We are happy to serve you from{" "}
+          <span style={{ color: "#e9bb24" }}>
+            {openHr}:00 - {closeHr}:00
+          </span>
+          .
+        </div>
+      )}
+    </footer>
+  );
 }
 
-function Pizza(p) {
+function Pizza({ pizzaObj }) {
   return (
-    <li className="pizza">
-      <img src={p.pizzaObj.photoName} alt={p.pizzaObj.name} />
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h3>{p.pizzaObj.name}</h3>
-        <p>{p.pizzaObj.ingredients}</p>
-        <span>{p.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        {console.log(pizzaObj.soldOut)}
+        <span>{pizzaObj.soldOut ? "Sold Out" : pizzaObj.price}</span>
       </div>
     </li>
   );
